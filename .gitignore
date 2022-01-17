@@ -356,6 +356,9 @@ celerybeat-schedule
 env/
 venv/
 ENV/
+.secret
+.privateKey
+.privatekey
 
 # Spyder project settings
 .spyderproject
