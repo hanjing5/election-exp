@@ -26,7 +26,7 @@ contract Election {
     // also stored on the blockchain
     uint public candidatesCount;
 
-    string public uniqNetworkId = "fuji";
+    string public uniqNetworkId = "Binance testnet";
 
     constructor () public {
         addCandidate("Candidate 1");
