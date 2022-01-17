@@ -26,6 +26,8 @@ contract Election {
     // also stored on the blockchain
     uint public candidatesCount;
 
+    string public uniqNetworkId = "fuji";
+
     constructor () public {
         addCandidate("Candidate 1");
         addCandidate("Candidate 2");
