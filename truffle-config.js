@@ -1,3 +1,10 @@
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+const fs = require('fs');
+const privateKey = fs.readFileSync(".privatekey").toString().trim();
+const privateKeys = [
+  privateKey
+];
+
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
   // for more about customizing your Truffle configuration!
@@ -15,8 +22,11 @@ module.exports = {
       accounts: [`0x${process.env.REACT_APP_PRIVATE_KEY}`]
     },
     matic: {
-      url: "https://rpc-mumbai.maticvigil.com",
-      accounts: [`0x${process.env.REACT_APP_PRIVATE_KEY}`]
+      provider: () => new HDWalletProvider(privateKeys, `https://rpc-mumbai.matic.today`),
+      network_id: 80001,
+      confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true
     },
     fuji: {
       url: 'https://api.avax-test.network/ext/bc/C/rpc',

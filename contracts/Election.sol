@@ -49,6 +49,13 @@ contract Election {
 
         // update candidate vote count
         candidates[_candidateId].voteCount++;
+
+        // trigger callback after voting event is over
+        emit votedEvent(_candidateId);
     }
+
+    event votedEvent (
+        uint indexed _candidateId
+    );
 
 }
