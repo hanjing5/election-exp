@@ -99,6 +99,15 @@ App = {
           candidatesSelect.append(candidateOption);
         });
       }
+
+      electionInstance.uniqNetworkId()
+      .then((uniq_network_id) => {
+        
+      var uniqNetworkIdSelect = $('#uniq');
+      uniqNetworkIdSelect.html("Unique Network ID: " + uniq_network_id);
+
+      });
+
       return electionInstance.voters(App.account);
     }).then(function(hasVoted) {
       // Do not allow a user to vote

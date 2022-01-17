@@ -4,7 +4,6 @@ const privateKey = fs.readFileSync(".privatekey").toString().trim();
 const privateKeys = [
   privateKey
 ];
-
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
   // for more about customizing your Truffle configuration!
@@ -29,10 +28,22 @@ module.exports = {
       skipDryRun: true
     },
     fuji: {
-      url: 'https://api.avax-test.network/ext/bc/C/rpc',
-      gasPrice: 225000000000,
-      chainId: 43113,
-      accounts: [`0x${process.env.REACT_APP_PRIVATE_KEY}`]
+      provider: function() {
+            return new HDWalletProvider(privateKeys, 
+              "https://api.avax-test.network/ext/bc/C/rpc"
+            )
+      },
+      network_id: "*",
+      gas: 3000000,
+      gasPrice: 470000000000,
+      skipDryRun: true
+    },
+    binance_testnet: {
+      provider: () => new HDWalletProvider(privateKeys, `https://data-seed-prebsc-1-s1.binance.org:8545`),
+      network_id: 97,
+      confirmations: 10,
+      timeoutBlocks: 200,
+      skipDryRun: true
     },
     develop: {
       port: 8545
