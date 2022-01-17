@@ -38,6 +38,13 @@ module.exports = {
       gasPrice: 470000000000,
       skipDryRun: true
     },
+    testnet: {
+      provider: () => new HDWalletProvider(privateKeys, `https://data-seed-prebsc-1-s1.binance.org:8545`),
+      network_id: 97,
+      confirmations: 10,
+      timeoutBlocks: 200,
+      skipDryRun: true
+    },
     develop: {
       port: 8545
     }
